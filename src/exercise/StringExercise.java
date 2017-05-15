@@ -44,7 +44,7 @@ public class StringExercise {
             System.out.println(bobDefault);
         }
 
-        if(parentsInput.)
+
 
         System.out.println("Talk with Bob again? (y/n)");
             userInput = in.nextLine();
