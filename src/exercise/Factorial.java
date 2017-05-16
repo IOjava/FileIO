@@ -2,25 +2,34 @@ package exercise;
 import java.util.Scanner;
 
 public class Factorial {
+        public static void main(String[] args) {
+            int x = 5 * 4 % 3;
+            System.out.println(x);
+        }
 
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter number: ");
-        int number = in.nextInt();
-        int fact;
-        fact = calculate(number);
-        System.out.println("Factorial of "+number+" is: "+fact);
-
-    }
-
-    private static int calculate(int n){
-        if(n == 0)
-            return 1;
-        else if (n == 1)
-            return 1;
-        else
-            return (n* calculate(n-1));
-
-    }
+//    public static void main(String[] args) {
+//        Scanner in = new Scanner(System.in);
+//        String wantsToContinue;
+//        long number;
+//        PrintStream out = System.out;
+//        do {
+//        number = getNumber(out, Scanner in);
+//        System.out.println(number + "! = " + calculate(number));
+//        wantsToContinue = in.next();
+//        }while("y".equalsIgnoreCase(wantsToContinue));
+//    }
+//
+//    public static long calculate(long number){
+//        int fact = 1;
+//        for(int i = 1; i <= number; i++) {
+//        fact = fact * i;
+//        }
+//        return fact;
+//
+//    }
+//    public static long getNumber(PrintStream out, Scanner in) {
+//        output.println("Enter number: ");
+//        return in.nextLong();
+//    }
 
 }
