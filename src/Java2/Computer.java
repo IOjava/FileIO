@@ -11,7 +11,7 @@ public class Computer {
     static String category = "Electronic";
 
     public Computer(String type){
-
+        this.type = type;
     }
 
     public boolean powerOn(){
