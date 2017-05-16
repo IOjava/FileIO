@@ -6,8 +6,13 @@ public class Computer {
     public String OS;
     public String CPU;
     public double RAM;
+    public String type;
     private double price;
-    static String category;
+    static String category = "Electronic";
+
+    public Computer(String type){
+
+    }
 
     public boolean powerOn(){
         System.out.println("On");

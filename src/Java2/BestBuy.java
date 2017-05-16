@@ -5,7 +5,7 @@ public class BestBuy {
         Computer mac = new Computer();
         Computer windows = new Computer();
 
-        Math.abs()
+
         mac.CPU = "1.21Ghz";
         System.out.println(mac.CPU);
 
