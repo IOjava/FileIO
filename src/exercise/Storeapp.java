@@ -3,6 +3,7 @@ package exercise;
 import java.io.PrintStream;
 import java.util.Scanner;
 import java.time.LocalDateTime;
+<<<<<<< HEAD
 import java.time.format.DateTimeFormatter;
 public class Storeapp {
     public static void main(String[] args) {
@@ -14,6 +15,22 @@ public class Storeapp {
         menuInput(in, out, receipt);
     }
 
+=======
+
+public class Storeapp {
+    public static void main(String[] args) {
+
+        Scanner in = new Scanner(System.in).useDelimiter("\n");
+        PrintStream out = System.out;
+
+        String receipt = "nothing to print";
+        int itemCount;
+        double itemPrice;
+
+        menuInput(in, out, receipt);
+
+    }
+>>>>>>> master
         private static void menuInput(Scanner in, PrintStream out, String receipt){
             switch(printMenu(in)) {
                 case "1":
@@ -41,11 +58,15 @@ public class Storeapp {
 
         private static void printReceipt(String receipt, PrintStream out){
             out.print(receipt);
+<<<<<<< HEAD
 //            LocalDateTime date = LocalDateTime.now();
 //            DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
 //            String text = date.format(formatter);
 //            LocalDateTime parsedDate = LocalDateTime.parse(text, formatter);
 //            out.print(parsedDate);
+=======
+
+>>>>>>> master
         }
 
         private static void createSale(Scanner in, PrintStream out){
@@ -60,7 +81,11 @@ public class Storeapp {
 
                 out.println("Enter the item price");
                 double itemPrice = in.nextDouble();
+<<<<<<< HEAD
                 newItem += String.format("%-4d| %-9s| $%-5.2f\n", itemCount, itemName, itemPrice);
+=======
+                newItem += String.format("%-4d| %-9s| %-5.2f", itemCount, itemName, itemPrice);
+>>>>>>> master
 
                 out.println("Enter another item? (y/n)");
             }while(in.next().equalsIgnoreCase("y"));
