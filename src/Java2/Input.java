@@ -6,9 +6,7 @@ public class Input {
 
     private final Scanner in;
 
-    public Input(){
-        in = new Scanner(System.in);
-    }
+    public Input(){in = new Scanner(System.in);}
 
     public  String getString() {
         System.out.println("Enter a string: ");
