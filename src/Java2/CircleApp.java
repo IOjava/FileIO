@@ -1,16 +1,15 @@
 package Java2;
 
 public class CircleApp{
+
     public static void main(String[] args) {
+
         Input value = new Input();
-        value.getString("Enter a radius: ");
-
-        Circle entry = new Circle(value.getDouble());
-        double area = entry.getArea();
-        double circum = entry.getCircumference();
-        System.out.printf("Area is: %.3f \n", area);
-        System.out.printf("Circumference is: %.3f \n", circum);
-
+        System.out.println("Enter radius:");
+        double radius = value.getDouble();
+        Circle c = new Circle(radius);
+        System.out.printf("Area is: %.3f \n", c.getArea());
+        System.out.printf("Circumference is: %.3f \n",c.getCircumference());
 
     }
 }

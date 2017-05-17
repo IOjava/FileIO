@@ -4,21 +4,12 @@ public class InputTest {
     public static void main(String[] args) {
 
         Input entry = new Input();
+        int min = 1;
+        int max = 40;
+        System.out.println("Is today Wed?");
+        System.out.println(entry.yesNo());
+        System.out.println("Provide a # between "+min+" and "+max);
+        System.out.println(entry.getInt(min, max)+" is in range!");
 
-        String text = entry.getString("Enter a radius: ");
-        boolean ask = entry.yesNo();
-        int num1 = entry.getInt();
-        int num2 = entry.getInt(1, 40);
-        double dbl1 = entry.getDouble();
-        double dbl2 = entry.getDouble(0.00, 1000.00);
-
-
-
-        System.out.println(text);
-        System.out.println(ask);
-        System.out.println(num1);
-        System.out.println(num2);
-        System.out.println(dbl1);
-        System.out.println(dbl2);
     }
 }
