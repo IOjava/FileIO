@@ -8,7 +8,7 @@ public class Input {
 
     public Input(){in = new Scanner(System.in);}
 
-    public  String getString() {
+    public  String getString(String prompt) {
         System.out.println("Enter a string: ");
         return in.nextLine();
     }
@@ -32,6 +32,12 @@ public class Input {
         return in.nextInt();
     }
 
+
+    public double getDouble(){
+        System.out.println();
+        return in.nextDouble();
+    }
+
     public double getDouble(double min, double max){
         double getValue;
         do{
@@ -39,10 +45,6 @@ public class Input {
             getValue = in.nextDouble();
         }while(getValue < min || getValue > max);
         return getValue;
-    }
-    public double getDouble(){
-        System.out.println("Enter a decimal number: ");
-        return in.nextDouble();
     }
 
 

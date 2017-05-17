@@ -2,8 +2,10 @@ package Java2;
 
 public class InputTest {
     public static void main(String[] args) {
+
         Input entry = new Input();
-        String text = entry.getString();
+
+        String text = entry.getString("Enter a radius: ");
         boolean ask = entry.yesNo();
         int num1 = entry.getInt();
         int num2 = entry.getInt(1, 40);
