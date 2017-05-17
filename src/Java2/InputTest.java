@@ -8,7 +8,7 @@ public class InputTest {
         int num1 = entry.getInt();
         int num2 = entry.getInt(1, 40);
         double dbl1 = entry.getDouble();
-        double dbl2 = entry.getDouble(0.00, 1000.00);
+        double dbl2 = entry.getDouble(0.22, 89.34);
 
 
 

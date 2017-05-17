@@ -2,7 +2,7 @@
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
-.idea/*
+
 # Package Files #
 *.jar
 *.war
@@ -12,7 +12,7 @@
 hs_err_pid*
 
 \.DS_Store
-.idea/*.xml
+
 \.idea/
 .idea
 *.xml
