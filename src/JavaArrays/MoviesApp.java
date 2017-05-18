@@ -22,6 +22,7 @@ import java.util.Scanner;
                     "8) Add movies\n";
 
             ArrayList<Movie> movies = new ArrayList<>(Arrays.asList(MoviesArray.findAll()));
+
             System.out.println("Welcome to MoviePhone!\n");
             do {
                 System.out.println(menu + "Enter your choice:");
@@ -34,7 +35,7 @@ import java.util.Scanner;
                     } else if(userInput == 1) {
                         movies.get(i).printMovie();
                     } else if(userInput >=2 && userInput <= 7) {
-                        if(movies.get(i).getCategory().equals(genres[userInput-2])) {
+                        if(movies.get(i).getGenre().equals(genres[userInput-2])) {
                             movies.get(i).printMovie();
                         }
                     } else if(userInput == 8) {
