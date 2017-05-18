@@ -11,7 +11,6 @@ public class NameGenerator {
         Random random = new Random();
         int i = random.nextInt(10);
 
-
         System.out.println(adjectives[i] + "-" + nouns[i]);
 
     }
