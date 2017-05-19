@@ -1,22 +1,23 @@
 package Java2;
 
 public class Person {
-    private String name;
+    protected String name;
+    private int age;
+    private char gender;
 
-    public void setName(String name) {
+    public Person(String name, int age, char gender) {
         this.name = name;
+        this.age = age;
+        this.gender = gender;
     }
 
-    public String getName() {
-        return name;
+    public String description() {
+        return String.format(
+                "This is %s and %s is %d years old",
+                name,
+                'F' == gender ? "she" : "he",
+                age
+        );
     }
-    public void sayHello(){
-        System.out.println("hello " + this.name);
-    }
-
-    public Person(String name) {
-        this.name = name;
-    }
-
-
 }
+

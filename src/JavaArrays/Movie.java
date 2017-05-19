@@ -18,16 +18,20 @@ public class Movie {
     public String getGenre() {return this.genre;}
 
     public void printMovie() {
-        out.println("**********************\n" +
-                "Movie Title: "+this.title + "\n" +
-                "Movie Genre: "+ modifyGenre() +
-                "\n**********************\n");
+        out.format("+-------------------------------------+----------+\n");
+        out.format("| Title                               | Genre    |\n");
+        out.format("+-------------------------------------+----------+\n");
+        String leftAlignFormat = "| %-35s | %-8s |\n";
+        out.format(leftAlignFormat, this.title, modifyGenre());
+        out.format("+-------------------------------------+----------+\n");
+
+
     }
 
     public Movie addMovie() {
         out.println("Enter Title:");
         String title = input.nextLine();
-        System.out.println("Enter Genre:");
+        out.println("Enter Genre:");
         String genre = input.nextLine();
         return new Movie(title, genre);
     }

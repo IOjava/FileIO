@@ -8,6 +8,7 @@ import java.util.Scanner;
         public static void main(String[] args) {
             Scanner entry = new Scanner(System.in);
             int userInput;
+
             boolean exit = false;
             Movie movie = new Movie("", "");
             String[] genres = {"animated", "comedy", "drama", "horror", "musical","sci-fi" };
@@ -31,6 +32,7 @@ import java.util.Scanner;
                 for (int i = 0; i < movies.size(); i++) {
                     if (userInput == 0) {
                         exit = true;
+                        System.exit(0);
                         break;
                     } else if(userInput == 1) {
                         movies.get(i).printMovie();
