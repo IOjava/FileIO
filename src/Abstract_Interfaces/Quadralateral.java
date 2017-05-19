@@ -2,7 +2,7 @@ package Abstract_Interfaces;
 
 abstract class Quadralateral extends Shape implements Measurable {
     protected double length;
-    protected double width:
+    protected double width;
 
     public Quadralateral(double length, double width){this.length = length;this.width = width;}
 
