@@ -1,10 +1,9 @@
 package Abstract_Interfaces;
 
-public class Rectangle extends Quadralateral {
+public class Rectangle extends Quadralateral implements Measurable{
 
-    public Rectangle(double length, double width){
-        super(length, width);
-    }
+    public Rectangle(double length, double width){super(length, width);}
+
     @Override
     public double getPerimeter(){return this.getLength()*2 + this.getWidth()*2;}
 
