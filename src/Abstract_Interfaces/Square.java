@@ -1,15 +1,15 @@
 package Abstract_Interfaces;
 
-public class Square extends Quadralateral {
-        private double side;
+public class Square extends Quadralateral implements Measurable{
 
-        public Square(double side) {super(side, side);this.side = side;}
-
-        @Override
-        public double getPerimeter() {return 4*this.side;}
+        public Square(double side) {super(side, side);}
 
         @Override
-        public double getArea() {return this.side * this.side;}
+        public double getArea() {return length * width;}
+
+        @Override
+        public double getPerimeter() {return length*2 + width*2;}
+
 
         @Override
         public void setLength(double length) {this.length = length;}

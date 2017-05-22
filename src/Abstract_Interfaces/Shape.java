@@ -1,6 +1,6 @@
 package Abstract_Interfaces;
 
-abstract class Shape {
+abstract public class Shape {
     abstract class Quadralateral extends Shape implements Measurable {
         protected double length;
         protected double width;
