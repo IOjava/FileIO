@@ -15,14 +15,15 @@ public class GradesApp {
 
     public static void printStudentList(Map<String, Student> students) {
         students.forEach((key, value) -> System.out.printf(" | %-14s | \n", key));
-        System.out.println("\nWhat student would you like to see more information on? Enter 'All' for complete list.");
+        System.out.println("\nWhat student would you like to see more information on?\n(Enter 'All' for complete list)");
         String answer = entry.nextLine();
 
-        if (answer.equalsIgnoreCase("all")) {
+        if ("All".equalsIgnoreCase(answer)) {
             students.forEach((key, value) -> System.out.printf(" | %-14s | \n", key));
 
         } else if (students.get(answer) == null) {
             System.out.println("Sorry, no student found with the github username of \"" + answer + "\".");
+            seeMoreStudents(students);
 
         } else {
             System.out.printf("Name: %s\nGithub Username: %s\nCurrent Average: %.2f\n", students.get(answer).getName(), answer, students.get(answer).getGradeAverage());
@@ -37,10 +38,13 @@ public class GradesApp {
 
         if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) {
             printStudentList(students);
-        } else {
+        } else if (!answer.equalsIgnoreCase("y") || !answer.equalsIgnoreCase("yes")) {
+            System.out.println("Sorry. " + answer + " is not a valid command.\n");
+            seeMoreStudents(students);
+        }else if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")){
             System.out.println("Goodbye, and have a wonderful day!");
             System.exit(0);
-        }
+        }else
         entry.next();
     }
 

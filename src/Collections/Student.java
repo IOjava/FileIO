@@ -36,16 +36,7 @@ public class Student {
     }
 
     public static void main(String[] args) {
-//        List <Integer> grades = new ArrayList<>();
-//        Student student = new Student("Jason");
-//
-//        student.addGrade(grades);
-//        student.addGrade(10);
-//        student.addGrade(9);
-//
-//
-//
-//        System.out.println(student.getGradeAverage());
+
     }
 
 }
