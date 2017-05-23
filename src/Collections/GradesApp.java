@@ -1,54 +1,69 @@
 package Collections;
 
-import Java2.Input;
-
+import java.util.Scanner;
 import java.util.HashMap;
 import java.util.Map;
+
 public class GradesApp {
-    private Student student;
+    public static Scanner entry = new Scanner(System.in);
+
+    public static void getStudentInfo(Map<String, Student> students) {
+        System.out.println("Here are the Github usernames of our students:");
+        printStudentList(students);
+    }
+
+
+    public static void printStudentList(Map<String, Student> students) {
+        students.forEach((key, value) -> System.out.printf(" | %-14s | \n", key));
+        System.out.println("\nWhat student would you like to see more information on? Enter 'All' for complete list.");
+        String answer = entry.nextLine();
+
+        if (answer.equalsIgnoreCase("all")) {
+            students.forEach((key, value) -> System.out.printf(" | %-14s | \n", key));
+
+        } else if (students.get(answer) == null) {
+            System.out.println("Sorry, no student found with the github username of \"" + answer + "\".");
+
+        } else {
+            System.out.printf("Name: %s\nGithub Username: %s\nCurrent Average: %.2f\n", students.get(answer).getName(), answer, students.get(answer).getGradeAverage());
+        }
+        seeMoreStudents(students);
+    }
+
+    public static void seeMoreStudents(Map<String, Student> students) {
+        System.out.println("Would you like to see another student?");
+        String answer = entry.nextLine();
+
+
+        if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) {
+            printStudentList(students);
+        } else {
+            System.out.println("Goodbye, and have a wonderful day!");
+            System.exit(0);
+        }
+        entry.next();
+    }
 
     public static void main(String[] args) {
-        Map<String, Student> students = new HashMap();
+        Map<String, Student> students = new HashMap<>();
 
         Student jason = new Student("Jason");
         Student robin = new Student("Robin");
         Student roxana = new Student("Roxana");
         Student ian = new Student("Ian");
-        Input entry = new Input();
+
+        students.put("cptcrunchy", jason);
+        students.put("teddy-error", robin);
+        students.put("roxanavp87", roxana);
+        students.put("idoherty", ian);
 
         jason.addGrades(6, 7, 8, 10, 15, 4);
         robin.addGrades(7, 8, 9, 12, 11, 3);
         roxana.addGrades(8, 3, 5, 11, 3, 12);
         ian.addGrades(5, 2, 8, 14, 10, 8);
 
-        students.put("cptcrunchy", jason);
-        students.put("teddy-error", robin);
-        students.put("roxanavp87", roxana);
-        students.put("idohertyr", ian);
 
-        System.out.println("Welcome!\n" + "\n" + "Would you like to see a list of our student's github names:");
-        String answer = entry.getString();
-
-        if (answer.equalsIgnoreCase("n")) {
-            System.out.println("Goodbye, and have a wonderful day!");
-            System.exit(0);
-        } else {
-            System.out.println("Here are the github usernames of our students:");
-            students.forEach((key, value) -> {
-                System.out.printf(" | %s | ", key);
-            });
-        }
-        System.out.println("\nWhat student would you like to see more information on?");
-
-        String answer2 = entry.getString();
-
-
-        if (!students.containsKey(answer2)) {
-            System.out.println("Sorry, no student found with the github username of \"" + answer2 + "\".");
-
-        } else {
-            System.out.printf("Name: %s ", students.get(answer2));
-        }
-
+        System.out.println("Welcome");
+        getStudentInfo(students);
     }
 }
