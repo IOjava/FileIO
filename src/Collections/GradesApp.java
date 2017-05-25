@@ -12,14 +12,13 @@ public class GradesApp {
         printStudentList(students);
     }
 
-
     public static void printStudentList(Map<String, Student> students) {
         students.forEach((key, value) -> System.out.printf(" | %-14s | \n", key));
         System.out.println("\nWhat student would you like to see more information on?\n(Enter 'All' for complete list)");
         String answer = entry.nextLine();
 
         if ("All".equalsIgnoreCase(answer)) {
-            students.forEach((key, value) -> System.out.printf(" | %-14s | \n", key));
+            students.forEach((username, student) -> System.out.printf(" | %-14s | \n", username));
 
         } else if (students.get(answer) == null) {
             System.out.println("Sorry, no student found with the github username of \"" + answer + "\".");
@@ -34,7 +33,6 @@ public class GradesApp {
     public static void seeMoreStudents(Map<String, Student> students) {
         System.out.println("Would you like to see another student?");
         String answer = entry.nextLine();
-
 
         if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) {
             printStudentList(students);
@@ -61,10 +59,11 @@ public class GradesApp {
         students.put("roxanavp87", roxana);
         students.put("idoherty", ian);
 
-        jason.addGrades(6, 7, 8, 10, 15, 4);
-        robin.addGrades(7, 8, 9, 12, 11, 3);
-        roxana.addGrades(8, 3, 5, 11, 3, 12);
-        ian.addGrades(5, 2, 8, 14, 10, 8);
+
+        jason.addGrades(88, 95, 99, 94, 86, 94);
+        robin.addGrades(97, 98, 89, 92, 91, 83);
+        roxana.addGrades(98, 83, 95, 91, 93, 82);
+        ian.addGrades(95, 92, 88, 94, 90, 88);
 
 
         System.out.println("Welcome");
