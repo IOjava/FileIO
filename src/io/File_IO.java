@@ -54,10 +54,7 @@ public class File_IO {
         }
     }
 
-    public static String addContact() throws IOException {
-        Path contactsPath = Paths.get(addressBook, contacts);
-        List<String> people = Files.readAllLines(contactsPath);
-
+    public static void addContact() throws IOException {
         System.out.println("Add a new contact");
         System.out.println("Enter Contacts Name");
         String nameInput = in.nextLine();
@@ -65,23 +62,12 @@ public class File_IO {
         String phoneNumInput = in.nextLine();
         List<String> newContact = Arrays.asList(nameInput + " | " + phoneNumInput);
 
-        for(String person: people){
-            if(person.contains(nameInput) && person.contains(phoneNumInput)){
-                System.out.println("There's already a contact named "+nameInput+". Do you want to overwrite it? (Yes/No)");
-                String yesNoInput = in.nextLine();
-                if(yesNoInput.equalsIgnoreCase("yes") || yesNoInput.equalsIgnoreCase("y")){
-                    newContact.add(nameInput+phoneNumInput);
-                      continue;
-                }
-                newContact.add(person);
-            }
-        }
         Files.write(
-                Paths.get(addressBook, contacts),
-                newContact,
-                StandardOpenOption.APPEND
-        );
-        return nameInput;
+            Paths.get(addressBook, contacts),
+            newContact,
+            StandardOpenOption.APPEND
+            );
+        continueMenu();
     }
 
 
