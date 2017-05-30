@@ -5,24 +5,25 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
+import java.util.*;
 
 public class File_IO {
 
-    public static String addressBook = "contactList";
-    public static String contacts = "contacts.txt";
+    private static String addressBook = "contactList";
+    private static String contacts = "contacts.txt";
 
-    public static void printMenu() throws IOException{
+    private static void printMenu() throws IOException{
         System.out.println("1. View contacts\n2. Add a new contact\n3. Search a contact by name.\n4. Delete an existing contact.\n5. Exit.\nEnter an option (1, 2, 3, 4 or 5):");
         menuOptions();
     }
-    public static void exitProgram() throws IOException{
+
+    private static void exitProgram() throws IOException{
         System.out.println("Goodbye!");
         System.exit(0);
     }
-    public static void continueMenu() throws IOException{
+
+    private static void continueMenu() throws IOException{
         System.out.println("Would you like to do something else?");
         String entry = in.nextLine();
         if (entry.equalsIgnoreCase("y") || entry.equalsIgnoreCase("yes")) {
@@ -31,7 +32,7 @@ public class File_IO {
             exitProgram();
         }
 
-    public static void menuOptions() throws IOException{
+    private static void menuOptions() throws IOException{
         String entry = in.nextLine();
 
         switch(entry){
@@ -54,27 +55,27 @@ public class File_IO {
         }
     }
 
-    public static void addContact() throws IOException {
+    private static void addContact() throws IOException {
         System.out.println("Add a new contact");
         System.out.println("Enter Contacts Name");
         String nameInput = in.nextLine();
         System.out.println("Enter Contacts Number");
         String phoneNumInput = in.nextLine();
-        List<String> newContact = Arrays.asList(nameInput + " | " + phoneNumInput);
+        List<String> newContact = Collections.singletonList(nameInput+" | "+phoneNumInput);
 
         Files.write(
-            Paths.get(addressBook, contacts),
+            Paths.get(addressBook,contacts),
             newContact,
             StandardOpenOption.APPEND
-            );
+        );
         continueMenu();
     }
 
 
-    public static void viewContact() throws IOException{
+    private static void viewContact() throws IOException{
         Path contactsPath = Paths.get(addressBook, contacts);
         List<String> people = Files.readAllLines(contactsPath);
-        System.out.println("Enter person's name you are looking for.\n");
+        System.out.println("Enter person's name you are looking for.");
         String displayContact = in.nextLine();
 
         for(String individual: people){
@@ -85,42 +86,46 @@ public class File_IO {
         continueMenu();
     }
 
-    public static void viewAllContacts() throws IOException {
+    private static void viewAllContacts() throws IOException {
         Path contactsPath = Paths.get(addressBook, contacts);
         List<String> people = Files.readAllLines(contactsPath);
-
+        String name = "Name";
+        String number = "Phone number";
+        System.out.printf("%-12s | %-12s\n", name, number);
         for (int i = 0; i < people.size(); i++){
-            System.out.println((i +1) + ": " + people.get(i));
+            System.out.println(String.format("%s | ",people.get(i)));
         }
         continueMenu();
     }
 
-    public static void deleteContact() throws IOException {
+    private static void deleteContact() throws IOException {
         Path contactsPath = Paths.get(addressBook, contacts);
         List<String> people = Files.readAllLines(contactsPath);
 
         for (int i = 0; i < people.size(); i++){
             System.out.println((i +1) + ": " + people.get(i));
         }
+
         System.out.println("Enter number of contact to delete.");
         int deleteItem = in.nextInt();
-        System.out.println("Is this the one you want to delete? \n" + people.get(deleteItem-1));
-        people.remove(deleteItem-1);
-        Files.write(
-                Paths.get(addressBook, contacts),
-                people
-        );
+        System.out.println("Is this the one you want to delete?\n" + people.get(deleteItem-1));
+        String entry = in.next();
+
+        if(entry.equalsIgnoreCase("yes") || entry.equalsIgnoreCase("y")) {
+            people.remove(deleteItem-1);
+            Files.write(Paths.get(addressBook, contacts),people);
+            in.nextLine();
+        }else{
+            if(!entry.equalsIgnoreCase("y") || !entry.equalsIgnoreCase("yes")){
+                deleteContact();
+            }
+        }
         continueMenu();
+
 
     }
 
-    public static Scanner in = new Scanner(System.in);
-
-
-    public static void main(String[] args) throws IOException{
-
-
-
+    private static void createFile() throws IOException{
         Path dataDirectory = Paths.get(addressBook);
         Path dataFile = Paths.get(addressBook, contacts);
 
@@ -132,16 +137,12 @@ public class File_IO {
         if (Files.notExists(dataFile)){
             Files.createFile(dataFile);
         }
+    }
+    public static Scanner in = new Scanner(System.in);
 
-//      READS THE contacts.txt FILE CONTENT
-        List<String> lines = Files.readAllLines(dataFile);
-        for(String line : lines){
-            System.out.println(line);
-        }
-//        Get user selection
+
+    public static void main(String[] args) throws IOException{
+        createFile();
         printMenu();
-
-
-
     }
 }
